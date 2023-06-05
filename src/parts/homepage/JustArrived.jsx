@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function JustArrived() {
     return (
@@ -46,9 +47,9 @@ export default function JustArrived() {
                             Cangkir Mauttie
                         </h5>
                         <span className="">IDR 89.300</span>
-                        <a href="details.html" className="stretched-link">
+                        <Link to="/categories/:idc" className="stretched-link">
                             {/* <!-- fake children --> */}
-                        </a>
+                        </Link>
                     </div>
                     {/* <!-- END: JUST ARRIVED ROW 1 --> */}
 
