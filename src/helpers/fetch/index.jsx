@@ -1,7 +1,9 @@
+import { REACT_APP_API_HOST } from '../../../config';
+
 export default function fetchData({
     url,
     method = "GET",
-    host = process.env.REACT_APP_API_HOST,
+    host = REACT_APP_API_HOST,
     body,
 }) {
     return fetch(`${host}${url}`, {

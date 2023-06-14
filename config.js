@@ -1,0 +1,1 @@
+export const REACT_APP_API_HOST = 'https://5e480884-d85c-42a6-83ac-065023b9ad5e.mock.pstmn.io';
