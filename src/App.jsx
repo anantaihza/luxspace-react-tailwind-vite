@@ -10,20 +10,29 @@ import DetailsPage from "./pages/DetailsPage";
 import Cart from "./pages/Cart";
 import Congratulation from "./pages/Congratulation";
 import NotFound from "./pages/NotFound";
+import Provider from "./helpers/hooks/useGlobalContext";
 
 function App() {
     return (
-        <div className="App">
+        <Provider>
             <Router>
                 <Routes>
                     <Route exact path="/" Component={HomePage} />
-                    <Route path="/categories/:idc" Component={DetailsPage} />
+                    <Route
+                        exact
+                        path="/categories/:idc"
+                        Component={DetailsPage}
+                    />
+                    <Route
+                        path="/categories/:idc/product/:idp"
+                        Component={DetailsPage}
+                    />
                     <Route path="/cart" Component={Cart} />
                     <Route path="/congratulation" Component={Congratulation} />
                     <Route path="*" Component={NotFound} />
                 </Routes>
             </Router>
-        </div>
+        </Provider>
     );
 }
 
