@@ -20,7 +20,7 @@ export default function DetailPage() {
 
     useEffect(() => {
         run(fetchData({ url: `/api/products/${idp}` }));
-    }, [run]);
+    }, [run, idp]);
 
     return (
         <>

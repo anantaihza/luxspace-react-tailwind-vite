@@ -1,22 +1,65 @@
-import React, { useReducer, useContext, createContext } from "react";
+import React, {
+    useReducer,
+    useContext,
+    createContext,
+} from "react";
 
 const initialState = {
-  cart: {},
+    cart: {},
 };
 const Context = createContext();
-
 
 function reducer(state, action) {
     switch (action.type) {
         case "ADD_TO_CART":
-            console.log(action);
             return {
-              // state akan disalin kemudian state akan ditambahkan item baru yang berada pada cart: state.cart
-              // jika kondisi nya true maka akan ditambah item jika false atau kosong maka akan dibuat baru
+                // state akan disalin kemudian state akan ditambahkan item baru yang berada pada cart: state.cart
+                // jika kondisi nya true maka akan ditambah item jika false atau kosong maka akan dibuat baru
                 ...state,
-                cart: state.cart
-                    ? { ...state.cart, [action.item.id]: action.item }
-                    : { [action.item.id]: action.item },
+                cart: !state.cart
+                    ? { [action.item.id]: { product: action.item, qty: 1 } }
+                    : !state.cart[action.item.id]
+                    ? {
+                          ...state.cart,
+                          [action.item.id]: { product: action.item, qty: 1 },
+                      }
+                    : {
+                          ...state.cart,
+                          [action.item.id]: {
+                              product: action.item,
+                              qty: state.cart[action.item.id].qty + 1,
+                          },
+                      },
+            };
+        case "REMOVE_FROM_CART":
+            if (state.cart[action.id].qty > 1) {
+                return {
+                    ...state,
+                    cart: {...state.cart,
+                          [action.id]: {
+                              product: action.item,
+                              qty: state.cart[action.id].qty - 1,
+                          },}
+                };
+            } else if (state.cart[action.id].qty === 1) {
+                return {
+                    ...state,
+                    cart: Object.keys(state.cart)
+                    .filter((key) => +key !== +action.id)
+                    .reduce((acc, key) => {
+                      const item = state.cart[key];
+                      acc[item.product.id] = item;
+                      return acc;
+                    }, {})
+                        
+                };
+            }
+            
+
+        case "RESET_CART":
+            return {
+                ...state,
+                cart: initialState.cart,
             };
 
         default: {
