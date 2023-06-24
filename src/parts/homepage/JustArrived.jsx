@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Carousel from "../../components/Carousel";
 import useAsync from "../../helpers/hooks/useAsync";
 import fetchData from "../../helpers/fetch";
-import SkeletonJustArrived from "./skeleton/SkeletonJustArrived";
+import SkeletonJustArrived from "../homepage/skeleton/SkeletonJustArrived";
 import "../../helpers/format/currency";
 
 export default function JustArrived() {
