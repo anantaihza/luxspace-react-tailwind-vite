@@ -6,15 +6,13 @@ import BrowseRoom from "../parts/homepage/BrowseRoom";
 import Clients from "../parts/Clients";
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
-import useScrollAnchor from "../helpers/hooks/useScrollAnchor";
-import useModalDOM from "../helpers/hooks/useModalDOM";
+import Document from "../parts/Document";
 
 export default function HomePage() {
-    useScrollAnchor();
-    useModalDOM();
+    
 
     return (
-        <>
+        <Document>
             <Header position="absolute" />
             <Hero />
             <BrowseRoom />
@@ -22,6 +20,6 @@ export default function HomePage() {
             <Clients />
             <Sitemap />
             <Footer />
-        </>
+        </Document>
     );
 }

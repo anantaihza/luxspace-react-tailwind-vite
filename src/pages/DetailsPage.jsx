@@ -13,6 +13,10 @@ import fetchData from "../helpers/fetch";
 import SkeletonProductDetails from "../parts/details/skeleton/SkeletonProductDetails";
 import SkeletonSuggestion from "../parts/details/skeleton/SkeletonSuggestion";
 
+import Document from "../parts/Document";
+import Message from "../components/Message";
+import "../helpers/format/currency"
+
 export default function DetailPage() {
     const { idp } = useParams();
 
@@ -23,7 +27,7 @@ export default function DetailPage() {
     }, [run, idp]);
 
     return (
-        <>
+        <Document>
             <Header theme={"black"} />
 
             <Breadcrumb
@@ -33,20 +37,34 @@ export default function DetailPage() {
                     { url: "/categories/09283/products/7888", name: "Details" },
                 ]}
             />
-            {isLoading ? (
-                <SkeletonProductDetails />
-            ) : (
-                <ProductDetails data={data} />
-            )}
 
-            {isLoading ? (
-                <SkeletonSuggestion />
+            {isError ? (
+                <Message
+                    info={{
+                        title: "404 NOT FOUND",
+                        desc: error.errors.message,
+                        img: "",
+                        altImg: "",
+                    }}
+                />
             ) : (
-                <Suggestion data={data?.relatedProducts || {}} />
+                <>
+                    {isLoading ? (
+                        <SkeletonProductDetails />
+                    ) : (
+                        <ProductDetails data={data} />
+                    )}
+
+                    {isLoading ? (
+                        <SkeletonSuggestion />
+                    ) : (
+                        <Suggestion data={data?.relatedProducts || {}} />
+                    )}
+                </>
             )}
 
             <Sitemap />
             <Footer />
-        </>
+        </Document>
     );
 }

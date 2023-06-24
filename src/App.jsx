@@ -24,7 +24,7 @@ function App() {
                         Component={DetailsPage}
                     />
                     <Route
-                        path="/categories/:idc/product/:idp"
+                        path="/categories/:idc/products/:idp"
                         Component={DetailsPage}
                     />
                     <Route path="/cart" Component={Cart} />

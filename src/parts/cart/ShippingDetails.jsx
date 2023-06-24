@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAsync from "../../helpers/hooks/useAsync";
 import { useGlobalContext } from "../../helpers/hooks/useGlobalContext";
 import useForm from "../../helpers/hooks/useForm";
 import fetchData from "../../helpers/fetch";
 
 export default function ShippingDetails() {
-    // const history = useHistory();
+    const navigateTo = useNavigate();
     const { data, run, isLoading } = useAsync();
     const { state, dispatch } = useGlobalContext();
 
@@ -20,7 +20,7 @@ export default function ShippingDetails() {
         payment: "",
     });
 
-    console.log(payload);
+    // console.log(payload);
 
     // jika jumlah payload yang terisi sama dengan jumlah panjang payload
     // inisial: false . true = false
@@ -36,34 +36,26 @@ export default function ShippingDetails() {
     async function fnSubmit(event) {
         event.preventDefault();
         try {
-            console.log(
-                Object.keys(state.cart).map((key) => {
-                    return {
-                        id: state.cart[key].product.id,
-                        qty: state.cart[key].qty,
-                    };
+            const res = await fetchData({
+                url: `/api/checkout`,
+                method: "POST",
+                body: JSON.stringify({
+                    ...payload,
+                    cart: Object.keys(state.cart).map((key) => {
+                        return {
+                            id: state.cart[key].product.id,
+                            qty: state.cart[key].qty
+                        }
+                    })
                 })
-            );
-            // const res = await fetchData({
-            //     url: `/api/checkout`,
-            //     method: "POST",
-            //     body: JSON.stringify({
-            //         ...payload,
-            //         cart: Object.keys(state.cart).map((key) => {
-            //             return {
-            //                 id: state.cart[key].product.id,
-            //                 qty: state.cart[key].qty
-            //             }
-            //         })
-            //     })
-            // })
+            })
 
-            // if (res) {
-            //     history.push("/congratulation")
-            //     dispatch({
-            //         type: "RESET_CART"
-            //     })
-            // }
+            if (res) {
+                navigateTo("/congratulation")
+                dispatch({
+                    type: "RESET_CART"
+                })
+            }
         } catch (error) {
             console.log(error);
         }

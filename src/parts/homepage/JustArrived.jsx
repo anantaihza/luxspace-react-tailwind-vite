@@ -5,6 +5,7 @@ import Carousel from "../../components/Carousel";
 import useAsync from "../../helpers/hooks/useAsync";
 import fetchData from "../../helpers/fetch";
 import SkeletonJustArrived from "./skeleton/SkeletonJustArrived";
+import "../../helpers/format/currency";
 
 export default function JustArrived() {
     const { data, error, run, isLoading } = useAsync();
@@ -77,9 +78,9 @@ export default function JustArrived() {
                                     <h5 className="text-lg font-semibold mt-4">
                                         {item.title}
                                     </h5>
-                                    <span className="">IDR {item.price}</span>
+                                    <span className="">{item.price.currency()}</span>
                                     <Link
-                                        to={`/categories/${item.idc}/product/${item.id}`}
+                                        to={`/categories/${item.idc}/products/${item.id}`}
                                         className="stretched-link"
                                     >
                                         {/* <!-- fake children --> */}

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useAsync from "../../helpers/hooks/useAsync";
 import fetchData from "../../helpers/fetch";
 import SkeletonBrowseRoom from "./skeleton/skletonBrowseRoom";
+import NumberFormater from "../../helpers/format/numberFormater";
 
 export default function BrowseRoom() {
     const { data, run, isLoading } = useAsync();
@@ -78,7 +79,7 @@ export default function BrowseRoom() {
                                             {room.title}
                                         </h5>
                                         <span className="">
-                                            {room.products} item
+                                            <NumberFormater number={room.products} /> item
                                             {room.products > 1 ? "s" : ""}
                                         </span>
                                     </div>

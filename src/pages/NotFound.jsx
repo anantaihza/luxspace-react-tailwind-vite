@@ -3,10 +3,11 @@ import Header from "../parts/Header";
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
 import Message from "../components/Message";
+import Document from "../parts/Document";
 
 export default function NotFound() {
     return (
-        <>
+        <Document>
             <Header theme={"black"} />
             <Message
                 info={{
@@ -19,6 +20,6 @@ export default function NotFound() {
 
             <Sitemap />
             <Footer />
-        </>
+        </Document>
     );
 }

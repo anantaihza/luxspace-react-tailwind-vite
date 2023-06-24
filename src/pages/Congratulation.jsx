@@ -4,10 +4,11 @@ import Breadcrumb from "../components/Breadcrumb";
 import Sitemap from "../parts/Sitemap";
 import Footer from "../parts/Footer";
 import Message from "../components/Message";
+import Document from "../parts/Document";
 
 export default function Congratulation() {
     return (
-        <>
+        <Document>
             <Header theme={"black"} />
 
             <Breadcrumb
@@ -21,12 +22,12 @@ export default function Congratulation() {
                     title: "Ah yes it’s success!",
                     desc: "Furniture yang anda beli akan kami kirimkan saat ini juga so now please sit tight and be ready for it",
                     img: "/images/content/illustration-success.png",
-                    altImg: "congrats illustration"
+                    altImg: "congrats illustration",
                 }}
             />
 
             <Sitemap />
             <Footer />
-        </>
+        </Document>
     );
 }

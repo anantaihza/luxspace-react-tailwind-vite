@@ -56,7 +56,7 @@ export default function ProductDetails({ data }) {
                 </div>
                 <div className="flex-1 px-4 md:p-6">
                     <h2 className="text-5xl font-semibold">{data.title}</h2>
-                    <p className="text-xl">IDR {data.price}</p>
+                    <p className="text-xl">{data.price.currency()}</p>
 
                     <button
                     onClick={() => 
