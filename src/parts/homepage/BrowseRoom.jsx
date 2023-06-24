@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useAsync from "../../helpers/hooks/useAsync";
 import fetchData from "../../helpers/fetch";
-import SkeletonBrowseRoom from "./skeleton/skletonBrowseRoom";
+import SkeletonBrowseRoom from "./skeleton/skeletonBrowseRoom";
 import NumberFormater from "../../helpers/format/numberFormater";
 
 export default function BrowseRoom() {
