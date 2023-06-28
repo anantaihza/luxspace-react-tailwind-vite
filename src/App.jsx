@@ -1,8 +1,7 @@
 import "./assets/css/App.css";
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
     Route,
-    NavLink,
     Routes,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -15,7 +14,7 @@ import Provider from "./helpers/hooks/useGlobalContext";
 function App() {
     return (
         <Provider>
-            <Router>
+            <BrowserRouter>
                 <Routes>
                     <Route exact path="/" Component={HomePage} />
                     <Route
@@ -31,7 +30,7 @@ function App() {
                     <Route path="/congratulation" Component={Congratulation} />
                     <Route path="*" Component={NotFound} />
                 </Routes>
-            </Router>
+            </BrowserRouter>
         </Provider>
     );
 }
