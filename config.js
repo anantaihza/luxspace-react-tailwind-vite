@@ -1,1 +1,1 @@
-export const REACT_APP_API_HOST = 'https://5e480884-d85c-42a6-83ac-065023b9ad5e.mock.pstmn.io';
+export const REACT_APP_API_HOST = 'https://1cf2affe-ce69-4556-9960-0861e0f081b4.mock.pstmn.io';
